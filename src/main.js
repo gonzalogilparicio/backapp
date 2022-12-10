@@ -11,7 +11,7 @@
 
 // inputs:
 // num sucursal
-// directorio (poner por default)
+// directorio destino (poner por default uno)
 // directorio a backupear
 // chequear fin de mes
 
@@ -27,7 +27,7 @@
 // directorio archivo apagar
 
 
-
+//importaciones de modulos de node
 
 const {
     app,
@@ -43,15 +43,21 @@ const {
     Serializer
 } = require('v8')
 
+//si está en desarrollo importa reload para actualizar cambios
+
 if (process.env.NODE_ENV !== 'production') {
     require('electron-reload')(__dirname, {
 
     })
 }
 
+//inicializacion de ventanas
+
 let mainWindow;
 let newConfigurationWindow;
 let newAcercaDeWindow;
+
+//ventana principal
 
 app.on('ready', () => {
     mainWindow = new BrowserWindow({
@@ -73,20 +79,24 @@ app.on('ready', () => {
     });
 });
 
+//ventana configuracion
+
 function configurationWindow() {
     newConfigurationWindow = new BrowserWindow({
         width: 400,
         height: 330,
         title: "Configuracion",
-        resizable: false
+        // resizable: false
     });
-    newConfigurationWindow.setMenu(null);
+    // newConfigurationWindow.setMenu(null);
     newConfigurationWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'views/configuration.html'),
         protocol: 'file',
         slashes: true
     }))
 }
+
+//ventana acerca de
 
 function acercaDeWindow() {
     newAcercaDeWindow = new BrowserWindow({
@@ -102,6 +112,8 @@ function acercaDeWindow() {
         slashes: true
     }))
 }
+
+//menu para la ventana principal
 
 const templateMenu = [{
         label: 'Archivo',
@@ -126,6 +138,8 @@ const templateMenu = [{
         }
     }
 ];
+
+//si está en desarrollo muestra opciones para desarrolladores
 
 if (process.env.NODE_ENV !== 'production') {
     templateMenu.push({
