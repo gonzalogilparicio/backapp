@@ -1,0 +1,23 @@
+{
+  "name": "backapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gonzalogilparicio/backapp.git"
+  },
+  "keywords": [],
+  "author": "Gonzalo Gil Paricio",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gonzalogilparicio/backapp/issues"
+  },
+  "homepage": "https://github.com/gonzalogilparicio/backapp#readme",
+  "dependencies": {
+    "electron": "^22.0.0"
+  }
+}
