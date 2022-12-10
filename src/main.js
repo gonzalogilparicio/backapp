@@ -1,3 +1,34 @@
+// agregar si está seguro de cerrar la app 
+// tanto apretando la X como poniendo salir 
+
+
+// lado servidor:
+// mandar sin comprimir
+// copy hacia la 10
+// escribir archivo apagar
+// si algo salio mal avisar por mail
+// apagar pc
+
+// inputs:
+// num sucursal
+// directorio (poner por default)
+// directorio a backupear
+// chequear fin de mes
+
+// lado terminal:
+// iniciar con windows en el tray
+// siempre abierto
+// chequear cada 10 seg archivo apagar
+// borrar apagar
+// apagar pc
+// si algo salió mal avisar por mail
+// chequear fin de mes
+// inputs:
+// directorio archivo apagar
+
+
+
+
 const {
     app,
     BrowserWindow,
@@ -5,6 +36,12 @@ const {
 } = require('electron');
 const url = require('url');
 const path = require('path');
+const {
+    DESTRUCTION
+} = require('dns');
+const {
+    Serializer
+} = require('v8')
 
 if (process.env.NODE_ENV !== 'production') {
     require('electron-reload')(__dirname, {
@@ -30,13 +67,18 @@ app.on('ready', () => {
     }))
     const mainMenu = Menu.buildFromTemplate(templateMenu);
     Menu.setApplicationMenu(mainMenu);
+
+    mainWindow.on('closed', () => {
+        app.quit();
+    });
 });
 
 function configurationWindow() {
     newConfigurationWindow = new BrowserWindow({
         width: 400,
         height: 330,
-        title: "Configuración"
+        title: "Configuracion",
+        resizable: false
     });
     newConfigurationWindow.setMenu(null);
     newConfigurationWindow.loadURL(url.format({
@@ -71,6 +113,9 @@ const templateMenu = [{
             },
             {
                 label: 'Salir',
+                click() {
+                    app.quit();
+                }
             },
         ],
     },
@@ -81,3 +126,19 @@ const templateMenu = [{
         }
     }
 ];
+
+if (process.env.NODE_ENV !== 'production') {
+    templateMenu.push({
+        label: 'devtools',
+        submenu: [{
+                label: 'mostrar/ocultar',
+                click(item, focusedWindow) {
+                    focusedWindow.toggleDevTools();
+                }
+            },
+            {
+                role: 'reload',
+            },
+        ]
+    })
+}
