@@ -8,15 +8,21 @@ const path = require('path');
 
 if (process.env.NODE_ENV !== 'production') {
     require('electron-reload')(__dirname, {
-        
+
     })
 }
 
 let mainWindow;
 let newConfigurationWindow;
+let newAcercaDeWindow;
 
 app.on('ready', () => {
-    mainWindow = new BrowserWindow({});
+    mainWindow = new BrowserWindow({
+        width: 480,
+        height: 330,
+        title: "BackApp",
+        resizable: false
+    });
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'views/index.html'),
         protocol: 'file',
@@ -40,11 +46,24 @@ function configurationWindow() {
     }))
 }
 
-const templateMenu = [
-    {
+function acercaDeWindow() {
+    newAcercaDeWindow = new BrowserWindow({
+        width: 280,
+        height: 120,
+        title: "Acerca de...",
+        resizable: false
+    });
+    newAcercaDeWindow.setMenu(null);
+    newAcercaDeWindow.loadURL(url.format({
+        pathname: path.join(__dirname, 'views/acercade.html'),
+        protocol: 'file',
+        slashes: true
+    }))
+}
+
+const templateMenu = [{
         label: 'Archivo',
-        submenu: [
-            {
+        submenu: [{
                 label: 'Configuración',
                 click() {
                     configurationWindow();
@@ -55,6 +74,10 @@ const templateMenu = [
             },
         ],
     },
-     {   label: 'Acerca de',
+    {
+        label: 'Acerca de',
+        click() {
+            acercaDeWindow();
+        }
     }
 ];
