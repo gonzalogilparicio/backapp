@@ -36,6 +36,11 @@ radioServidor.onclick = (e) => {
     inputNumSuc.value = 0;
     inputPathVbox.value = 'C:/Users/cuspide/"VirtualBox VMs"';
     inputPathDestino.value = 'C:/Users/public/backup';
+
+    inputsServidor.onsubmit = (e) => {
+        e.preventDefault();
+        console.log("prueba");
+    }
 }
 
 radioTerminal.onclick = (e) => {
@@ -45,6 +50,11 @@ radioTerminal.onclick = (e) => {
     mostrarServidor.setAttribute('class', 'form-group d-none mostrarServidor');
     mostrarTerminal.setAttribute('class', 'form-group mostrarTerminal');
     inputPathArchivoApagar.value = 'C:/Users/public/backup';
+
+    inputsTerminal.onsubmit = (e) => {
+        e.preventDefault();
+        console.log("prueba2");
+    }
 }
 
 

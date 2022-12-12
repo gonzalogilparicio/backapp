@@ -1,3 +1,5 @@
+//instalador https://github.com/electron/windows-installer
+
 // agregar si está seguro de cerrar la app 
 // tanto apretando la X como poniendo salir 
 
@@ -53,14 +55,6 @@ const {
     Serializer
 } = require('v8')
 
-//si está en desarrollo importa reload para actualizar cambios
-
-if (process.env.NODE_ENV !== 'production') {
-    require('electron-reload')(__dirname, {
-
-    })
-}
-
 //inicializacion de ventanas
 
 let mainWindow;
@@ -75,6 +69,7 @@ app.on('ready', () => {
         height: 330,
         title: "BackApp",
         resizable: false,
+        darkTheme: true,
         webPreferences: {
             nodeIntegration: true
         }
@@ -153,8 +148,10 @@ const templateMenu = [{
 ];
 
 //si está en desarrollo muestra opciones para desarrolladores
+//y carga el modulo reload
 
 if (process.env.NODE_ENV !== 'production') {
+    require('electron-reload')(__dirname, {});
     templateMenu.push({
         label: 'devtools',
         submenu: [{
