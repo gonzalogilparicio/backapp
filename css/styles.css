@@ -104,3 +104,40 @@ p {
 .main__acercade h1 {
     margin-bottom: 10px;
 }
+
+/* configuration */
+
+.main__configuration__modoelegido__span {
+    font-size: 12px;
+}
+
+.btn {
+    font-size: 10px;
+    background-color: rgb(107, 107, 107);
+    margin-inline: 10px;
+    border-radius: 10px !important;
+}
+
+.btn:hover {
+    background-color: rgb(94, 94, 94) !important;
+    color: white !important;
+}
+
+.btn:enabled {
+    border-color: white !important;
+    font-size: 25px !important;
+}
+
+button {
+    margin-top: 30px;
+    font-size: 12px;
+    background-color: rgb(107, 107, 107);    
+    border-radius: 10px !important;
+    padding: 10px;
+    border: none;
+}
+
+button:hover {
+    background-color: rgb(94, 94, 94) !important;
+    color: white !important;
+}

@@ -7,25 +7,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Configuración</title>
     <link rel="stylesheet" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../css/styles.css" />
 </head>
 
-<body>
-    <div class="container text-center p-3">
-        <h5 class="mb-4">Configuración</h5>
+<body class="main__configuration">
+    <div class="container text-center p-2">
         <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
-            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off" checked="">
+            <input type="radio" class="btn-check" name="btnradio" id="btnradio1" autocomplete="off">
             <label class="btn btn-outline-primary" for="btnradio1">Servidor</label>
             <input type="radio" class="btn-check" name="btnradio" id="btnradio2" autocomplete="off">
             <label class="btn btn-outline-primary" for="btnradio2">Terminal</label>
         </div>
     </div>
-    <div class="container text-center p-3" id="modoElegido">        
+    <div class="container text-center" id="modoElegido" class="main__configuration__modoelegido">
     </div>
-    <div class="container text-center p-3" id="configServidor">
+    <div class="container text-center p-3">
+        <div class="form-group d-none mostrarServidor main__configuration__form__servidor" id="configServidor">
+            <label class="col-form-label col-form-label-sm mt-1" for="inputSmall">Número de sucursal</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Numero de sucursal" id="main__configuration__form__servidor__numsuc">
+            <label class="col-form-label col-form-label-sm mt-1" for="inputSmall">Path archivos VirtualBox</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Path VBOX" id="main__configuration__form__servidor__pathvbox">
+            <label class="col-form-label col-form-label-sm mt-1" for="inputSmall">Path destino</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Path destino" id="main__configuration__form__servidor__pathdestino">
+            <button type="button">Guardar</button>
+        </div>
     </div>
-    <div class="container text-center p-3" id="configTerminal">
+    <div class="container text-center p-3">
+        <div class="form-group d-none mostrarTerminal main__configuration__form__terminal" id="configTerminal">
+            <label class="col-form-label col-form-label-sm mt-1" for="inputSmall">Path archivo apagar</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Path archivo apagar" id="main__configuration__form__terminal__path">
+            <button type="button" class="">Guardar</button>
+        </div>
     </div>
-
     <script src="../config.js"></script>
 </body>
 

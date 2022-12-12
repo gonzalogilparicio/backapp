@@ -1,6 +1,16 @@
 // agregar si está seguro de cerrar la app 
 // tanto apretando la X como poniendo salir 
 
+//que la app se actualice sola
+
+//password al iniciar
+
+//electron storage
+
+//que arranque en el tray
+
+//que escriba log en algun excel de drive y avise por mail si algo 
+//salió mal
 
 // lado servidor:
 // mandar sin comprimir
@@ -64,7 +74,10 @@ app.on('ready', () => {
         width: 480,
         height: 330,
         title: "BackApp",
-        resizable: false
+        resizable: false,
+        webPreferences: {
+            nodeIntegration: true
+        }
     });
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'views/index.html'),
