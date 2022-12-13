@@ -54,6 +54,8 @@ const {
 const {
     Serializer
 } = require('v8')
+const Store = require('electron-store');
+const store = new Store();
 
 //inicializacion de ventanas
 
@@ -96,7 +98,7 @@ function configurationWindow() {
         title: "Configuracion",
         // resizable: false
     });
-    // newConfigurationWindow.setMenu(null);
+    newConfigurationWindow.setMenu(null);
     newConfigurationWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'views/configuration.html'),
         protocol: 'file',

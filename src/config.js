@@ -12,49 +12,48 @@ const inputPathVbox = document.querySelector("#main__configuration__form__servid
 const inputPathDestino = document.querySelector("#main__configuration__form__servidor__pathdestino");
 const inputPathArchivoApagar = document.querySelector("#main__configuration__form__terminal__path");
 
-
 //objeto config
 
-let config = {
+let configDB = {
     "numSuc": 0,
     "pathBackup": '',
     "pathDest": '',
     "pathApagar": ''
 }
 
-config.numSuc.value = inputNumSuc;
-console.log(config);
+configDB.numSuc.value = inputNumSuc;
+console.log(configDB);
 
 let modo;
 
 radioServidor.onclick = (e) => {
     e.preventDefault();
-    modo = "servidor";    
+    modo = "servidor";
     modoElegido.innerHTML = '<span class="main__configuration__modoelegido__span">Modo: Servidor</span>';
     mostrarServidor.setAttribute('class', 'form-group mostrarServidor');
     mostrarTerminal.setAttribute('class', 'form-group d-none mostrarTerminal');
     inputNumSuc.value = 0;
-    inputPathVbox.value = 'C:/Users/cuspide/"VirtualBox VMs"';
+    inputPathVbox.value = 'C:/Users/cuspide/VirtualBox VMs';
     inputPathDestino.value = 'C:/Users/public/backup';
-
     inputsServidor.onsubmit = (e) => {
-        e.preventDefault();
-        console.log("prueba");
+        e.preventDefault();        
+        configDB.numSuc = inputNumSuc.value;
+        configDB.pathBackup = inputPathVbox.value;
+        configDB.pathDest = inputPathDestino.value;
+        console.log(configDB);
     }
 }
 
 radioTerminal.onclick = (e) => {
     e.preventDefault();
-    modo = "terminal";        
+    modo = "terminal";
     modoElegido.innerHTML = '<span class="main__configuration__modoelegido__span">Modo: Terminal</span>';
     mostrarServidor.setAttribute('class', 'form-group d-none mostrarServidor');
     mostrarTerminal.setAttribute('class', 'form-group mostrarTerminal');
     inputPathArchivoApagar.value = 'C:/Users/public/backup';
-
     inputsTerminal.onsubmit = (e) => {
         e.preventDefault();
-        console.log("prueba2");
+        configDB.pathApagar = inputPathArchivoApagar.value;
+        console.log(configDB);
     }
 }
-
-
